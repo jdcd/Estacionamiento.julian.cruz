@@ -33,19 +33,19 @@ pipeline {
 			}
 		}
 		
-		stage('Compile') {
-			steps {
-				echo "------------>Compile<------------"
-				sh 'gradle --b ./build.gradle compileJava'
+		stage('Build') {
+			steps{
+				echo "------------>Build<------------"
+				sh 'gradle --b ./build.gradle clean'
+                sh 'gradle --b ./build.gradle build'
 			}
 		}
 		
 		stage('Unit test'){
 			steps{
 				echo "------------>Unit Test<------------"
-				sh 'gradle --stacktrace test'
-				junit '**/build/test-results/test/*.xml' //aggregate test results - JUnit
-				step([$class: 'JacocoPublisher'])
+				sh 'gradle --b ./build.gradle test'
+                sh 'gradle --b ./build.gradle jacocoTestReport'
 			}
 		}
 		
@@ -55,12 +55,7 @@ pipeline {
 			}
 		}
 		
-		stage('Build') {
-			steps{
-				echo "------------>Build<------------"
-				sh 'gradle --b ./build.gradle build -x test'
-			}
-		}
+		
 		
 		stage('Static Code Analysis'){
 			steps{
