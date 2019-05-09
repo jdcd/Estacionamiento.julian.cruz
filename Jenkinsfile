@@ -61,6 +61,9 @@ pipeline {
 			steps{
 				echo "------------>Static Code Analysis<------------"
 				 withSonarQubeEnv('Sonar') {
+				 	echo "------------>Impresion del contenido<------------"
+				 	sh "ls -l"
+				 	echo "------------>Fin Impresion del contenido<------------"
 				 	sh "${tool name: 'SonarScanner',type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
 			 	}
 			}
