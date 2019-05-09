@@ -17,18 +17,48 @@ pipeline {
 		stage('ChackOut'){
 			steps{
 				echo "------------>Checkout<------------"
+				checkout([
+					$class: 'GitSCM',
+					branches: [[name: '*/master']],
+					doGenerateSubmoduleConfigurations: false,
+					extensions: [],
+					gitTool: 'Git_Centos',
+					submoduleCfg: [],
+					userRemoteConfigs: [[
+						credentialsId: 'GitHub_julian.cruz)',
+						url: 'https://github.com/jdcd/Estacionamiento.julian.cruz.git'
+					]]
+				])
+				sh 'gradle clean'
+			}
+		}
+		
+		stage('Compile') {
+			steps {
+				echo "------------>Compile<------------"
+				sh 'gradle --b ./build.gradle compileJava'
 			}
 		}
 		
 		stage('Unit test'){
 			steps{
 				echo "------------>Unit Test<------------"
+				sh 'gradle --stacktrace test'
+				junit '**/build/test-results/test/*.xml' //aggregate test results - JUnit
+				step([$class: 'JacocoPublisher'])
 			}
 		}
 		
 		stage('Integration test'){
 			steps{
 				echo "------------>Integration test<------------"
+			}
+		}
+		
+		stage('Build') {
+			steps{
+				echo "------------>Build<------------"
+				sh 'gradle --b ./build.gradle build -x test'
 			}
 		}
 		
@@ -41,11 +71,7 @@ pipeline {
 			}
 		}
 		
-		stage('Build') {
-			steps{
-				echo "------------>Build<------------"
-			}
-		}
+		
 	}
 		
 	post {
