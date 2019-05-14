@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.dominio.entidades;
+package co.com.ceiba.estacionamiento.domain.entidades;
 
 public class Vehicle {
 	private String plate;
@@ -10,6 +10,12 @@ public class Vehicle {
 		this.plate = plate;
 		this.type = type;
 		this.displacement = displacement;
+	}
+	
+	public Vehicle(String plate, VehicleType type) {
+		super();
+		this.plate = plate;
+		this.type = type;
 	}
 	
 	public String getPlate() {
