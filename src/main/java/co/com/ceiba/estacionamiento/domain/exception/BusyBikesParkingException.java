@@ -1,7 +1,7 @@
 package co.com.ceiba.estacionamiento.domain.exception;
 
-public class BusyGarageException extends RuntimeException {
-	
+public class BusyBikesParkingException extends RuntimeException{
+
 	/**
 	 * 
 	 */
@@ -9,7 +9,6 @@ public class BusyGarageException extends RuntimeException {
 
 	@Override
 	public String getMessage() {
-		return "The Garage is Bussy ";
-		
+		return "The bike parking is bussy ";
 	}
 }

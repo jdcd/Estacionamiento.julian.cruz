@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.domain.entidades;
+package co.com.ceiba.estacionamiento.infrastructure.entity;
 
 public class PriceTable {
 	

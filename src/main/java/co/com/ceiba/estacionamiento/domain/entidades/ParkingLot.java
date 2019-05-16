@@ -1,33 +1,35 @@
 package co.com.ceiba.estacionamiento.domain.entidades;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class ParkLot {
+public class ParkingLot {
 	
 	private int carsCapacity;   
 	private int bikesCapacity;
 	
-	private Garage[] carsSpace;
-	private Garage[] bikesSpace;
+	private List<Garage> carsSpace;
+	private List<Garage> bikesSpace;
 	
 	
 	
-	public ParkLot(int carsCapacity, int bikesCapacity) {
-		super();
+	public ParkingLot(int carsCapacity, int bikesCapacity) {
 		this.carsCapacity = carsCapacity;
 		this.bikesCapacity = bikesCapacity;
 		configParkLot();
 	}
 
 	private void configParkLot() {
-		carsSpace = new Garage[this.carsCapacity];
-		bikesSpace = new Garage[this.bikesCapacity];
+		
+		carsSpace = new ArrayList<>();
+		bikesSpace = new ArrayList<>();
 		
 		for (int i=1; i <= carsCapacity ; i++) {
-			carsSpace[i-1] = new Garage(true,i);
+			carsSpace.add(new Garage(true, i));
 		}
 		
 		for (int j=1; j <= bikesCapacity ; j++) {
-			bikesSpace[j-1] = new Garage(true,j);
+			carsSpace.add(new Garage(true, j));
 		}
 	}
 
@@ -39,16 +41,12 @@ public class ParkLot {
 		return bikesCapacity;
 	}
 
-	public Garage[] getCarsSpace() {
+	public List<Garage> getCarsSpace() {
 		return carsSpace;
 	}
 
-	public Garage[] getBikesSpace() {
+	public List<Garage> getBikesSpace() {
 		return bikesSpace;
 	}
-	
-	
-	
-
 	
 }

@@ -1,7 +1,11 @@
 package co.com.ceiba.estacionamiento.domain.exception;
 
-public class UnknownVehicleClassException extends Exception {
+public class UnknownVehicleClassException extends RuntimeException {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String unknownVehicleclass ;
 	
 	public UnknownVehicleClassException(String unknownVehicleclass) {
