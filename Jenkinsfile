@@ -41,11 +41,12 @@ pipeline {
 			}
 		}
 		
-		stage('Unit test'){
+		stage('Unit Tests') {
 			steps{
-				echo "------------>Unit Test<------------"
-				sh 'gradle --b ./build.gradle test'
-                sh 'gradle --b ./build.gradle jacocoTestReport'
+				echo "------------>Unit Tests<------------"
+				sh 'gradle --stacktrace test'
+				junit '**/build/test-results/test/*.xml' //aggregate test results - JUnit
+				step([$class: 'JacocoPublisher'])
 			}
 		}
 		
