@@ -30,7 +30,7 @@ public class VirtualOperatorTest {
 		
 		
 		//Assert
-		assertEquals(true, access);
+		assertEquals(false, access);
 	}
 	
 	
@@ -47,7 +47,7 @@ public class VirtualOperatorTest {
 		boolean access = donChepe.admitVehicle(superBike, sunday12);
 		
 		//Assert
-		assertEquals(true, access);
+		assertEquals(false, access);
 	}
 	
 	//No Monday, No Sunday
@@ -89,7 +89,7 @@ public class VirtualOperatorTest {
 		}
 		boolean access = donChepe.admitVehicle(la_nave, we8);
 		//Assert
-		assertEquals(false, access);
+		assertEquals(true, access);
 	}
 
 }
