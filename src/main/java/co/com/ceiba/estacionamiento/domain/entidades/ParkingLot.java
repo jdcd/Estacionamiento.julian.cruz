@@ -7,15 +7,17 @@ public class ParkingLot {
 	
 	private int carsCapacity;   
 	private int bikesCapacity;
+	private PriceTable priceTable;
 	
 	private List<Garage> carsSpace;
 	private List<Garage> bikesSpace;
 	
 	
 	
-	public ParkingLot(int carsCapacity, int bikesCapacity) {
+	public ParkingLot(int carsCapacity, int bikesCapacity, PriceTable priceTable) {
 		this.carsCapacity = carsCapacity;
 		this.bikesCapacity = bikesCapacity;
+		this.priceTable = priceTable;
 		configParkLot();
 	}
 
@@ -48,5 +50,9 @@ public class ParkingLot {
 	public List<Garage> getBikesSpace() {
 		return bikesSpace;
 	}
-	
+
+	public PriceTable getPriceTable() {
+		return priceTable;
+	}
+
 }

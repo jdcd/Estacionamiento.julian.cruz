@@ -6,18 +6,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.h2.engine.Session.TimeoutValue;
-
 /**
  * @author julian.cruz
  *
  */
 public class Bill {
+	
+	private int id;
 	private Ticket ticket;
 	private LocalDateTime closeDate;
 	private int finalPrice;
 	private PriceTable priceTable;
-	private int id;
 
 	public Bill(Ticket ticket, PriceTable costs, LocalDateTime closeDate) {
 		this.ticket = ticket;

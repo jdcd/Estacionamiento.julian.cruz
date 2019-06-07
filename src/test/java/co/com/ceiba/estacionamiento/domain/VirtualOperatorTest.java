@@ -9,8 +9,10 @@ import org.junit.Test;
 import co.com.ceiba.estacionamiento.domain.entidades.ParkingLot;
 import co.com.ceiba.estacionamiento.domain.entidades.Vehicle;
 import co.com.ceiba.estacionamiento.domain.entidades.VehicleType;
+import co.com.ceiba.estacionamiento.domain.entidades.VirtualOperator;
 import co.com.ceiba.estacionamiento.domain.exception.BusyGarageException;
 import co.com.ceiba.estacionamiento.domain.exception.UnknownVehicleClassException;
+import co.com.ceiba.estacionamiento.domain.ports.TicketPersistensePort;
 
 public class VirtualOperatorTest {
 
